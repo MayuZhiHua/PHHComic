@@ -35,5 +35,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.okhttp:okhttp:2.7.5'
-
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
 }
