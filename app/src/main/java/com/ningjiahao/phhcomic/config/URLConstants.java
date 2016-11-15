@@ -5,4 +5,5 @@ package com.ningjiahao.phhcomic.config;
  */
 
 public class URLConstants {
+
 }

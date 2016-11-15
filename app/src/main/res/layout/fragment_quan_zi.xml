@@ -1,13 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context="com.ningjiahao.phhcomic.fragment.QuanZiFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout_quanzi"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="@color/orangered"
+        app:tabTextColor="@color/black"
+        app:tabIndicatorColor="@color/orangered"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        app:tabPadding="10dp"/>
 
-</FrameLayout>
+    <com.ningjiahao.phhcomic.widget.NoScrollViewPager
+        android:id="@+id/viewPager_quanzi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
