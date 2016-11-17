@@ -2,14 +2,16 @@ package com.ningjiahao.phhcomic.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 推荐的JavaBean对象
+ * //http://common.moyougames.com/Posts/mostpvlist?proid=1&usert=&page=0&count=15&from=4
  * Created by HP on 2016/11/15.
  */
 
-public class TuiJianBean {
+public class TuiJianBean implements Serializable{
 
     /**
      * s : 0
@@ -37,7 +39,7 @@ public class TuiJianBean {
         this.c = c;
     }
 
-    public static class CBean {
+    public static class CBean implements Serializable {
         /**
          * setdis : 0
          * attachvideo : []
@@ -328,7 +330,7 @@ public class TuiJianBean {
             this.attachPicture = attachPicture;
         }
 
-        public static class UserextBean {
+        public static class UserextBean implements Serializable{
             /**
              * changed : 0
              * gender : 女

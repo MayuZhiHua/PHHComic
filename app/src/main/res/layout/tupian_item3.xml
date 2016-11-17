@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/linearLayout_tupian"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/linearLayout_item0"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo0"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo1"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo2"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout_item1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo3"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo4"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+        <ImageView
+            android:id="@+id/imageView_quanzi_photo5"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+</LinearLayout>
