@@ -2,13 +2,12 @@ package com.ningjiahao.phhcomic.retrofitinterface;
 
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
-import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
-import com.ningjiahao.phhcomic.bean.SearchResultBean;
-import com.ningjiahao.phhcomic.bean.ThemeBean;
 import com.ningjiahao.phhcomic.bean.ManHuaChapterBean;
 import com.ningjiahao.phhcomic.bean.ManHuaDetailBean;
 import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
-import com.ningjiahao.phhcomic.bean.TuiJianBean;
+import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
+import com.ningjiahao.phhcomic.bean.SearchResultBean;
+import com.ningjiahao.phhcomic.bean.ThemeBean;
 import com.ningjiahao.phhcomic.bean.ZanNumBean;
 
 import java.util.Map;
@@ -28,10 +27,24 @@ public interface MyRetrofitApi {
     @POST
     Observable<ManHuaKuBean> getManHuaKuBean(@Url String url);
     @GET
-    Observable<ManHuaDetailBean> getManHuaDetailBean(@Url String url,@Query("comicid") int id,@Query("from") int from);
+    Observable<ManHuaDetailBean> getManHuaDetailBean(@Url String url, @Query("comicid") int id, @Query("from") int from);
     @POST
     Observable<ZanNumBean> getZanNumBean(@Url String url, @QueryMap Map<String,Object> map);
     @GET
-    Observable<ManHuaChapterBean> getManHuaChapterBean(@Url String url,@QueryMap Map<String,Object> map);
+    Observable<ManHuaChapterBean> getManHuaChapterBean(@Url String url, @QueryMap Map<String,Object> map);
 
+    Observable<ThemeBean>getThemeData(@Url String url);
+
+    @GET
+    Observable<FindSearchTitleBean>getFindSearchTitle(@Url String url);
+
+
+    @GET
+    Observable<FindContentTitleBean>getFindContentTitil(@Url String url);
+
+    @GET
+    Observable<SearchResultBean>getSearchResult(@Url String url);
+
+    @GET
+    Observable<SearchDefaultBean>getSearchDefaultData(@Url String url);
 }
