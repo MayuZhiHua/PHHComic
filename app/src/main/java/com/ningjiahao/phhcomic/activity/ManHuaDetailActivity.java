@@ -101,7 +101,7 @@ public class ManHuaDetailActivity extends BaseActivity {
 
     public void getData() {
 
-        mRetrofitApi.getManHuaDetailBean(URLConstants.URL_DETAIL_MANHUA, id, 4)
+        myRetrofitApi.getManHuaDetailBean(URLConstants.URL_DETAIL_MANHUA, id, 4)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ManHuaDetailBean>() {
@@ -136,7 +136,7 @@ public class ManHuaDetailActivity extends BaseActivity {
         map.put("usert", "5c294581a1cf38da887cd5404c997092");
         map.put("subid", id);
         map.put("from", "4");
-        mRetrofitApi.getZanNumBean(URL_ZANNUM, map)
+        myRetrofitApi.getZanNumBean(URL_ZANNUM, map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ZanNumBean>() {
