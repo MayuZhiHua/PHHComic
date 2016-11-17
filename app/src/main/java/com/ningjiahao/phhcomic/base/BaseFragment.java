@@ -16,30 +16,30 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- *禁止滑动的ViewPager
  * Created by 甯宁寧 on 2016-11-14.
  */
 
-public class BaseFragment extends Fragment{
+public class BaseFragment extends Fragment {
     private Retrofit mRetrofit;
     public MyRetrofitApi mRetrofitApi;
     public Context mContext;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mContext=context;
+        mContext = context;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRetrofit=new Retrofit.Builder()
-                .baseUrl("http://blog.csdn.net/")
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl("http://m2.qiushibaike.com/")
                 .client(OkHttp3Helper.getOkHttpSingletonInstance())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        mRetrofitApi=mRetrofit.create(MyRetrofitApi.class);
+        mRetrofitApi = mRetrofit.create(MyRetrofitApi.class);
     }
 
     @Nullable

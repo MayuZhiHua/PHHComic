@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="230dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/manhuaku_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        />
+        <LinearLayout
+            android:id="@+id/dot_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <RadioButton
+            android:id="@+id/manhuaku_radio_project"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:drawableTop="@mipmap/z_project"
+            android:button="@null"
+            android:drawablePadding="0dp"
+            android:text="专题"/>
+        <RadioButton
+            android:id="@+id/manhuaku_radio_rank"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:button="@null"
+            android:drawablePadding="0dp"
+            android:layout_height="80dp"
+            android:drawableTop="@mipmap/z_ranking"
+            android:text="排行榜"/>
+        <RadioButton
+            android:id="@+id/manhuaku_radio_update"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:drawablePadding="0dp"
+            android:layout_height="80dp"
+            android:drawableTop="@mipmap/z_update"
+            android:text="更新"/>
+    </RadioGroup>
+
+</LinearLayout>

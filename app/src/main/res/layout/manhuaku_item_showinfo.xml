@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="100dp"
+    android:layout_height="150dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+        <ImageView
+            android:id="@+id/manhuaku_image_main"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:layout_height="130dp"/>
+
+        <ImageView
+            android:id="@+id/manhuaku_image_mark"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"/>
+        <LinearLayout
+            android:background="#55000000"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/manhuaku_txt_score"
+                android:drawableLeft="@drawable/xx_h"
+                android:drawablePadding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="9.7"
+                android:textStyle="bold"
+                android:textColor="@color/orangered"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/manhuaku_txt_latestchapter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="第33话"
+                android:gravity="right|center_vertical"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/manhuaku_txt_manhuaname"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="我是火车王"
+        android:textSize="10sp"/>
+
+</LinearLayout>

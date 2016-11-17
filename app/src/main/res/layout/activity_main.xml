@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.ningjiahao.phhcomic.activity.MainActivity">
 
-    <ImageView
-        android:id="@+id/image_test"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:layout_weight="1">
+
+        <fragment
+            android:id="@+id/Framelayout_manhuaku"
+            android:name="com.ningjiahao.phhcomic.fragment.ManHuaKuFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mainactivity_xiaoxu"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/main_xiaowu"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/mainactivity_faxian"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:button="@null"
+            android:background="@drawable/main_faxian"
+            android:gravity="center" />
+
+
+        <RadioButton
+            android:id="@+id/mainactivity_manhuaku"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:button="@null"
+            android:background="@drawable/main_manhuaku"
+            android:checked="true"
+            android:gravity="center" />
+
+
+
+        <RadioButton
+            android:id="@+id/mainactivity_quanzi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:button="@null"
+            android:background="@drawable/main_quanzi"
+            android:gravity="center" />
+
+
+        <RadioButton
+            android:id="@+id/mainactivity_geren"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:button="@null"
+            android:background="@drawable/main_geren"
+            android:gravity="center" />
+
+
+    </RadioGroup>
+
+</LinearLayout>

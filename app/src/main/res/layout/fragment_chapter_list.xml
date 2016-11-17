@@ -1,17 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.ningjiahao.phhcomic.fragment.ManHuaKuFragment">
+    tools:context="com.ningjiahao.phhcomic.fragment.ChapterListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView_manhuaku"
+        android:id="@+id/ChapterListFragment_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    l
 
-
-</RelativeLayout>
+</FrameLayout>

@@ -36,5 +36,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:9.4.0'
     testCompile 'junit:junit:4.12'
 }
