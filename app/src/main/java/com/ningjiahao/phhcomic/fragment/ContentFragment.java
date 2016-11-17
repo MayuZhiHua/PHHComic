@@ -14,6 +14,16 @@ import android.widget.TextView;
 
 import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.base.BaseFragment;
+import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
+import com.ningjiahao.phhcomic.config.URLConstants;
+
+import java.util.List;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,9 +34,9 @@ public class ContentFragment extends BaseFragment {
 
     private GridLayout mGridLayout;
 
-    public static final String []LOVE={"恋爱","日常","搞笑","动作","剧情","悬疑","萌系","插画"
-            ,"腐向","奇幻","武侠"};
-    public static final String []SHUZI={"76","103","179","43","66","20","14","22","43","60","4"};
+   private FindContentTitleBean mContentBean;
+
+    List<FindContentTitleBean.CBean.SBean>mList;
 
 
 
@@ -43,6 +53,40 @@ public class ContentFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        initNetData();
+    }
+
+    private void initNetData() {
+        Observable<FindContentTitleBean>observable=mRetrofitApi.getFindContentTitil(URLConstants.FIND_CONTENT_TITLE);
+        observable
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Subscriber<FindContentTitleBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(FindContentTitleBean findContentTitleBean) {
+                           mList=findContentTitleBean.getC().getS();
+                           for (int i=0;i<11;i++){
+                            View itemView=mInflater.inflate(R.layout.item_content,null,false);
+                            TextView textView= (TextView) itemView.findViewById(R.id.textview_love);
+                            textView.setText(mList.get(i).getName());
+                            textView.setTextColor(Color.parseColor("#ff4500"));
+                            TextView textView1= (TextView) itemView.findViewById(R.id.textview_shuzi);
+                            textView1.setText(mList.get(i).getComicnum());
+                            mGridLayout.addView(itemView);
+                        }
+                    }
+                });
+
     }
 
     @Override
@@ -56,17 +100,6 @@ public class ContentFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mGridLayout= (GridLayout) view.findViewById(R.id.gridlayout_fragment_content);
-        for (int i=0;i<11;i++){
-            View itemView=mInflater.inflate(R.layout.item_content,null,false);
-            TextView textView= (TextView) itemView.findViewById(R.id.textview_love);
-            textView.setText(LOVE[i]);
-            textView.setTextColor(Color.parseColor("#ff4500"));
 
-            TextView textView1= (TextView) itemView.findViewById(R.id.textview_shuzi);
-            textView1.setText(SHUZI[i]);
-
-            mGridLayout.addView(itemView);
-
-        }
     }
 }

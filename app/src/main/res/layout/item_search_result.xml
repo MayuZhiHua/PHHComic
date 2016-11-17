@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="10dp">
+
+   <ImageView
+       android:layout_width="100dp"
+       android:layout_height="match_parent"
+       android:id="@+id/imageview_search_item_appi"
+       android:scaleType="fitXY"/>
+   <LinearLayout
+       android:layout_width="170dp"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:layout_marginLeft="5dp">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_name"
+          android:textStyle="bold"
+          android:textSize="15sp"
+          android:textColor="#000000"
+          android:singleLine="true"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_tname"
+          android:textSize="13dp"
+          android:layout_marginTop="2dp"
+          />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_cfyname"
+          android:textSize="10sp"
+          android:layout_marginTop="2dp"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_author"
+          android:textSize="10sp"
+          android:layout_marginTop="2dp"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_partname"
+          android:textColor="#ff4500"
+          android:textStyle="bold"
+          android:textSize="12sp"
+          android:layout_marginTop="2dp"
+          android:singleLine="true"/>
+
+
+
+
+   </LinearLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+     <ImageView
+         android:layout_width="40dp"
+         android:layout_height="40dp"
+         android:src="@drawable/home_daily_round"
+         android:id="@+id/imageview_search_item_updata"
+         android:layout_centerHorizontal="true"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_updata"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="17dp"
+          android:textColor="#ffffff"
+          android:textSize="10sp"/>
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/xx_h"
+          android:layout_alignParentBottom="true"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textview_search_item_score"
+          android:textColor="#ff4500"
+          android:layout_alignParentBottom="true"
+          android:layout_marginLeft="23dp"/>
+
+   </RelativeLayout>
+
+
+
+</LinearLayout>
