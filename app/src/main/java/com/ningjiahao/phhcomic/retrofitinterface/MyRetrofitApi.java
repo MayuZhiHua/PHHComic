@@ -8,6 +8,7 @@ import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
 import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
 import com.ningjiahao.phhcomic.bean.SearchResultBean;
 import com.ningjiahao.phhcomic.bean.ThemeBean;
+import com.ningjiahao.phhcomic.bean.TuiJianBean;
 import com.ningjiahao.phhcomic.bean.ZanNumBean;
 
 import java.util.Map;
