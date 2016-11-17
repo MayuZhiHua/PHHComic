@@ -17,6 +17,8 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MyTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +27,8 @@
 
 
         </activity>
+        <activity android:name=".activity.PhotoViewActivity" />
+        <activity android:name=".activity.TieZiActivity"></activity>
     </application>
 
 </manifest>

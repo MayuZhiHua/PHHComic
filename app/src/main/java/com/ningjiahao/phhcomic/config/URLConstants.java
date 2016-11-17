@@ -36,4 +36,6 @@ public class URLConstants {
 
 
 
+    public static final String TUIJIAN_URL="http://common.moyougames.com/Posts/mostpvlist";
+    public static final String ZIUXIN_URL = "http://common.moyougames.com/Posts/showall";
 }

@@ -1,10 +1,13 @@
 package com.ningjiahao.phhcomic.fragment;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +30,7 @@ public class QuanZiFragment extends BaseFragment {
     private List<Fragment> fragmentList = new ArrayList<>();
     private String[] mTabs = {"推荐","最新","我的关注"};
     private QuanZiFragmentAdapter adapter;
+    private AlertDialog alertDialog;
 
 
     @Override
@@ -45,6 +49,21 @@ public class QuanZiFragment extends BaseFragment {
         mViewPager_quanzi = (NoScrollViewPager) view.findViewById(R.id.viewPager_quanzi);
         //设置ViewPager不能滑动
         mViewPager_quanzi.setNoScroll(true);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle("撸卡漫画")  //设置标题
+                .setMessage("请前往登录")  //设置内容
+                .setCancelable(true) //设置点击对话框之外区域取消或关闭
+                //设置确定按钮
+                .setPositiveButton("前往", new DialogInterface.OnClickListener() {
+                    //添加按钮1
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                //设置取消按钮
+                .setNegativeButton("取消", null);
+        alertDialog=builder.create();
     }
 
     @Override
@@ -62,7 +81,21 @@ public class QuanZiFragment extends BaseFragment {
         fragmentList.add(myAttentionFragment);
         adapter = new QuanZiFragmentAdapter(getChildFragmentManager(),fragmentList,mTabs);
         mViewPager_quanzi.setAdapter(adapter);
-
         mTabLayout_quanzi.setupWithViewPager(mViewPager_quanzi);
+        mTabLayout_quanzi.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                //Log.e("QuanZiFragment",tab.getPosition()+"");
+                switch (tab.getPosition()){
+                    case 2:
+                        alertDialog.show();
+                        break;
+                }
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
     }
 }
