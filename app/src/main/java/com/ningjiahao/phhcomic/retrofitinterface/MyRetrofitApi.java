@@ -47,4 +47,8 @@ public interface MyRetrofitApi {
 
     @GET
     Observable<SearchDefaultBean>getSearchDefaultData(@Url String url);
+
+    //获得TuiJianBean对象
+   @GET
+    Observable<TuiJianBean> getTuiJianBean(@Url String url, @QueryMap() Map<String,String> map);
 }
