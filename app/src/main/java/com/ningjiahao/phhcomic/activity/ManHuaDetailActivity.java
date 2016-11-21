@@ -21,6 +21,7 @@ import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.adapter.ChapterListAdapter;
 import com.ningjiahao.phhcomic.adapter.ManHuaDetailAdapter;
 import com.ningjiahao.phhcomic.base.BaseActivity;
+import com.ningjiahao.phhcomic.bean.CollectionBean;
 import com.ningjiahao.phhcomic.bean.ManHuaChapterBean;
 import com.ningjiahao.phhcomic.bean.ManHuaDetailBean;
 import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
@@ -39,6 +40,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -56,6 +59,10 @@ public class ManHuaDetailActivity extends BaseActivity{
     private List<Fragment> fragmentList=new ArrayList<>();
     private ManHuaDetailAdapter manHuaDetailAdapter;
     private int PartId;
+    private String yzhid;
+
+    private String name;
+    private String imageURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,7 +159,21 @@ public class ManHuaDetailActivity extends BaseActivity{
                 Toast.makeText(mContext, "点击了下载", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.manhuadetail_collection:
-                Toast.makeText(mContext, "点击了收藏", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "点击了收藏", Toast.LENGTH_SHORT).show();
+                CollectionBean collectionBean = new CollectionBean();
+                collectionBean.setYzhid(yzhid);
+                collectionBean.setName(name);
+                collectionBean.setImageURL(imageURL);
+                collectionBean.save(new SaveListener<String>(){
+                    @Override
+                    public void done(String s, BmobException e) {
+                        if(e==null){
+                            Toast.makeText(mContext, "收藏数据成功，", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(mContext, "收藏数据失败，", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
         }
 
@@ -188,6 +209,11 @@ public class ManHuaDetailActivity extends BaseActivity{
                         manhuadetail_jianjie.setText(manHuaDetailBean.getC().getDescr());
                         manhuadetail_score.setText(manHuaDetailBean.getC().getScore());
                         manhuadetail_zanNum.setText(manHuaDetailBean.getC().getId());
+                        //获得收藏的数据
+                        name = manHuaDetailBean.getC().getName();
+                        imageURL =URLConstants.BASE_IMAGE_URL+ manHuaDetailBean.getC().getAppicons();
+                        yzhid = manHuaDetailBean.getC().getId();
+
                     }
                 });
 

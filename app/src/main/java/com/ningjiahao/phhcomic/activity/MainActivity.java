@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransation=fragmentManager.beginTransaction();
         switch (v.getId()){
             case R.id.mainactivity_xiaoxu:
+                //fragmentTransation.replace(R.id.Framelayout_manhuaku,xiaoWoFragment);
                 fragmentTransation.hide(manHuaKuFragment);
                 fragmentTransation.hide(quanZiFragment);
                 fragmentTransation.show(xiaoWoFragment);
