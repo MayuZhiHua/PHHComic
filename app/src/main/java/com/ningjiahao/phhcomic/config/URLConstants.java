@@ -25,6 +25,7 @@ public class URLConstants {
     public static final String BASE_IMAGE_URL="http://static.moyougames.com/";
 
     public static final String FIND_SEARCH_TITLE_URL= "http://api.lookmanhua.com/customized/keysearch";
+    public static final String FIND_SEARCH_TITLE_URL= "http://api.lookmanhua.com/customized/keysearch";
 
 
     public static final String FIND_SEARCH_URL="http://api.lookmanhua.com/lists/search?page=1&size=100&from=4&key=%s";
@@ -35,16 +36,13 @@ public class URLConstants {
 
     public static final String DEFAULT_SEARCH_URL= "http://api.lookmanhua.com/lists/redcomic?page=1&size=50&from=4";
 
+    public static final String FIND_SEARCH_URL="http://api.lookmanhua.com/lists/search?page=1&size=100&from=4&key=%s";
 
+    public static final String FIND_CONTENT_TITLE="http://api.lookmanhua.com/lists/classify?page=1&size=100&from=4";
 
+    public static final String KEY_SEARCH="KEY_SEARCH";
 
-
-
-
-
-
-
-
+    public static final String DEFAULT_SEARCH_URL= "http://api.lookmanhua.com/lists/redcomic?page=1&size=50&from=4";
     public static final String TUIJIAN_URL="http://common.moyougames.com/Posts/mostpvlist";
     public static final String ZIUXIN_URL = "http://common.moyougames.com/Posts/showall";
 

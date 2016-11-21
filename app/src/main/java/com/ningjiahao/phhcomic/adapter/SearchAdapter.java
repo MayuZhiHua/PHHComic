@@ -1,6 +1,7 @@
 package com.ningjiahao.phhcomic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.activity.ManHuaDetailActivity;
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
 import com.ningjiahao.phhcomic.bean.SearchResultBean;
@@ -95,7 +97,7 @@ return null;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ViewHolder1) {
             if (!TextUtils.isEmpty(search) & type == TYPE2) {
                 ((ViewHolder1) holder).textView_result.setText("一共" + mList.size() + "个结果");
@@ -117,6 +119,16 @@ return null;
             ((ViewHolder2)holder).textView_partname.setText("更新到"+((SearchResultBean.CBean.SBean)(mList.get(position-1))).getPartname());
             ((ViewHolder2)holder).textView_score.setText(((SearchResultBean.CBean.SBean)(mList.get(position-1))).getScore());
             ((ViewHolder2)holder).textView_updata.setText(((SearchResultBean.CBean.SBean)(mList.get(position-1))).getTh());
+            ((ViewHolder2)holder).itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent =new Intent();
+                    intent.setClass(mContext, ManHuaDetailActivity.class);
+                    String id=((SearchResultBean.CBean.SBean)(mList.get(position-1))).getId();
+                    intent.putExtra("key",id);
+                    mContext.startActivity(intent);
+                }
+            });
         }
         if (holder instanceof ViewHolder3){
 
@@ -129,6 +141,16 @@ return null;
 
             ((ViewHolder3)holder).textView_partname.setText(((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getPartname());
             ((ViewHolder3)holder).textView_score.setText(((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getScore());
+            ((ViewHolder3)holder).itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent();
+                    intent.setClass(mContext,ManHuaDetailActivity.class);
+                    String id =((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getId();
+                    intent.putExtra("key",id);
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
 
