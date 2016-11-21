@@ -1,5 +1,6 @@
 package com.ningjiahao.phhcomic.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,13 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
 import com.ningjiahao.phhcomic.fragment.FindFragment;
 import com.ningjiahao.phhcomic.fragment.ManHuaKuFragment;
 import com.ningjiahao.phhcomic.fragment.QuanZiFragment;
 import com.ningjiahao.phhcomic.fragment.XiaoWoFragment;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ManHuaKuFragment manHuaKuFragment;
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FindFragment findFragment;
     private RadioButton mainactivity_xiaoxu,mainactivity_faxian,mainactivity_manhuaku,mainactivity_quanzi;
     private FragmentManager fragmentManager;
-
+    private ManHuaKuBean manHuaKuBean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initFragment() {
+        manHuaKuBean= (ManHuaKuBean) getIntent().getSerializableExtra("key");
         manHuaKuFragment=new ManHuaKuFragment();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("key",manHuaKuBean);
+        manHuaKuFragment.setArguments(bundle);
         quanZiFragment=new QuanZiFragment();
         xiaoWoFragment=new XiaoWoFragment();
         findFragment=new FindFragment();

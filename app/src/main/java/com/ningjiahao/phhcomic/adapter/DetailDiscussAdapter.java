@@ -1,6 +1,7 @@
 package com.ningjiahao.phhcomic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.activity.UserActivity;
 import com.ningjiahao.phhcomic.bean.ManHuaDiscussBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 import com.ningjiahao.phhcomic.helper.RecyclerViewAdapterHelper;
@@ -59,7 +61,10 @@ public class DetailDiscussAdapter extends RecyclerViewAdapterHelper<ManHuaDiscus
             imageView_discussHead.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "id是"+mList.get(getPosition()).getOid(), Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(mContext, UserActivity.class);
+                    String oid=mList.get(getAdapterPosition()).getOid();
+                    intent.putExtra("oid",oid);
+                    mContext.startActivity(intent);
                 }
             });
         }

@@ -180,7 +180,7 @@ return null;
                                 Glide.with(mContext)
                                         .load(URLConstants.BASE_IMAGE_URL+
                                                 ((SearchDefaultBean.CBean.SBean)(mList.get(index))).getAppicons())
-
+                                        .placeholder(R.drawable.ticai_placeimage)
                                         .into(((ViewHolder3)holder).imageView);
                                 ((ViewHolder3)holder).textView_name.setText(((SearchDefaultBean.CBean.SBean)(mList.get(index))).getName());
 
@@ -193,7 +193,7 @@ return null;
                                 Glide.with(mContext)
                                         .load(URLConstants.BASE_IMAGE_URL+
                                                 ((SearchResultBean.CBean.SBean)(mList.get(index))).getAppicons())
-
+                                        .placeholder(R.drawable.ticai_placeimage)
                                         .into(((ViewHolder3)holder).imageView);
                                 ((ViewHolder3)holder).textView_name.setText(((SearchResultBean.CBean.SBean)(mList.get(index))).getName());
 

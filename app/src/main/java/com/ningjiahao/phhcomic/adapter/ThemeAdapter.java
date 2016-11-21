@@ -49,6 +49,7 @@ public class ThemeAdapter extends RecyclerViewAdapterHelper<ThemeBean.CBean.SBea
         ((ThemeHolder)holder).textView_name.setText(name);
         ((ThemeHolder)holder).textView_part.setText(mList.get(position).getComicnum()+"部");
         Glide.with(mContext).load(URLConstants.BASE_IMAGE_URL+mList.get(position).getIconr())
+                .placeholder(R.drawable.ticai_placeimage)
                 .into(((ThemeHolder)holder).imageView_theme);
 
         ((ThemeHolder)holder).itemView.setOnClickListener(new View.OnClickListener() {

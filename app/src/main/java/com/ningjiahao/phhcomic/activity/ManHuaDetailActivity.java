@@ -31,6 +31,10 @@ import com.ningjiahao.phhcomic.fragment.ChapterListFragment;
 import com.ningjiahao.phhcomic.fragment.DetailDiscussFragment;
 import com.ningjiahao.phhcomic.interfaces.GetPartId;
 import com.ningjiahao.phhcomic.retrofitinterface.MyRetrofitApi;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.utils.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +46,7 @@ import java.util.Map;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import retrofit2.http.Url;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -58,6 +63,7 @@ public class ManHuaDetailActivity extends BaseActivity{
     private DetailDiscussFragment detailDiscussFragment;
     private List<Fragment> fragmentList=new ArrayList<>();
     private ManHuaDetailAdapter manHuaDetailAdapter;
+    private ManHuaDetailBean manHuaDetailBean;
     private int PartId;
     private String yzhid;
 
@@ -150,10 +156,14 @@ public class ManHuaDetailActivity extends BaseActivity{
                 finish();
                 break;
             case R.id.manhuadetail_share:
-                Toast.makeText(mContext, "点击了分享", Toast.LENGTH_SHORT).show();
+                new ShareAction(ManHuaDetailActivity.this).withText("看漫画啦")
+                        .withTargetUrl(URLConstants.IMAGE_BASE_URL+manHuaDetailBean.getC().getAppicons())
+                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
+                        .setCallback(umShareListener).open();
                 break;
             case R.id.manhuadetail_startread:
                 Toast.makeText(mContext, "点击了开始阅读", Toast.LENGTH_SHORT).show();
+                goReadFirst();
                 break;
             case R.id.manhuadetail_download:
                 Toast.makeText(mContext, "点击了下载", Toast.LENGTH_SHORT).show();
@@ -197,6 +207,7 @@ public class ManHuaDetailActivity extends BaseActivity{
 
                     @Override
                     public void onNext(ManHuaDetailBean manHuaDetailBean) {
+                        ManHuaDetailActivity.this.manHuaDetailBean=manHuaDetailBean;
                         Glide.with(mContext).load(URLConstants.IMAGE_BASE_URL + manHuaDetailBean.getC().getAppicono()).into(manhuadetail_image);
                         if (manHuaDetailBean.getC().getUpdatestate().equals("0")) {
                             manhuadetail_state.setImageResource(R.drawable.common_state_end);
@@ -257,6 +268,58 @@ public class ManHuaDetailActivity extends BaseActivity{
         manhuadetail_discuss.setTextColor(Color.parseColor("#000000"));
         manhuadetail_chapter.setTextColor(Color.parseColor("#ff4500"));
         manhuadetail_viewpager.setCurrentItem(0);
+    }
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat","platform"+platform);
+
+            Toast.makeText(mContext, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(mContext,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if(t!=null){
+                Log.d("throw","throw:"+t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(mContext,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+    private void goReadFirst(){
+        Map<String,Object> map=new HashMap<>();
+        map.put("page",1);
+        map.put("size",100);
+        map.put("from",4);
+        map.put("comicid",id);
+        myRetrofitApi.getManHuaChapterBean(URLConstants.URL_CHAPTERLIST,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ManHuaChapterBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(mContext, id + " 分享成功啦", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(ManHuaChapterBean manHuaChapterBean) {
+                        List<ManHuaChapterBean.CBean> cList = manHuaChapterBean.getC();
+                        ManHuaDetailActivity.this.PartId=Integer.valueOf(cList.get(cList.size()).getId());
+                        Intent intent=new Intent(mContext,ReadManHuaActivity.class);
+                        intent.putExtra("key",id);
+                        mContext.startActivity(intent);
+                    }
+                });
     }
 
 

@@ -40,9 +40,9 @@ public class ReadManHuaAdapter extends RecyclerViewAdapterHelper<String>{
     public void onBindMyViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof ReadManHuaAdapter.MyViewHolder){
             ManHuaBean.CBean.SizeBean sizeBean = Sizelist.get(position);
-            ((MyViewHolder) holder).readmanhua_photoview.setScaleType(ImageView.ScaleType.FIT_CENTER);
             Glide.with(mContext)
                     .load(URLConstants.IMAGE_BASE_URL+mList.get(position))
+                    .override(sizeBean.getW(),sizeBean.getH())
                     .into(((MyViewHolder) holder).readmanhua_photoview);
         }
 

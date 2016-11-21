@@ -71,7 +71,46 @@ public class ManHuaKuFragment extends BaseFragment {
     }
 
     private void initData() {
-        mRetrofitApi.getManHuaKuBean(URLConstants.URL_MAIN_MANHUAKU)
+        ManHuaKuBean manHuaKuBean= (ManHuaKuBean) getArguments().getSerializable("key");
+        List<ManHuaKuBean.CBean.CarouselBean> carousel = manHuaKuBean.getC().getCarousel();//Viewpager数据
+        List<ManHuaKuBean.CBean.NewcomicBean> newcomic = manHuaKuBean.getC().getNewcomic();//最新漫画数据
+        List<ManHuaKuBean.CBean.RecommendcomicBean> recommendcomic = manHuaKuBean.getC().getRecommendcomic();//编辑推荐数据
+        List<ManHuaKuBean.CBean.RedcomicBean> redcomic = manHuaKuBean.getC().getRedcomic();//最热漫画数据
+        List<ManHuaKuBean.CBean.SpecialBean> special = manHuaKuBean.getC().getSpecial();//专题数据
+        List<ManHuaKuBean.CBean.TopicBean> topic = manHuaKuBean.getC().getTopic();//漫画题材数据
+        List<ManHuaKuBean.CBean.WeekBean> week = manHuaKuBean.getC().getWeek();//每日更新数据
+        manhuaku_list.addAll(carousel);
+        manhuaku_list.add(zuire);
+        manhuaku_list.addAll(redcomic);
+        manhuaku_list.add(justone);
+        manhuaku_list.addAll(recommendcomic);
+        manhuaku_list.add(zuixin);
+        manhuaku_list.addAll(newcomic);
+        manhuaku_list.add(meiri);
+        manhuaku_list.addAll(week);
+        manhuaku_list.add(ticai);
+        manhuaku_list.add(flag);
+        manhuaku_list.addAll(topic);
+        manhuaku_list.add(zhuanti);
+        manhuaku_list.addAll(special);
+        mManHuaKuRecyclerAdapter = new ManHuaKuRecyclerAdapter(mContext, manhuaku_list, carousel, topic, special);
+        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 3);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (mManHuaKuRecyclerAdapter.getItemViewType(position) == mManHuaKuRecyclerAdapter.TYPE1
+                        || mManHuaKuRecyclerAdapter.getItemViewType(position) == mManHuaKuRecyclerAdapter.TYPE2
+                        || mManHuaKuRecyclerAdapter.getItemViewType(position) == mManHuaKuRecyclerAdapter.TYPE4
+                        || mManHuaKuRecyclerAdapter.getItemViewType(position) == mManHuaKuRecyclerAdapter.TYPE5
+                        || mManHuaKuRecyclerAdapter.getItemViewType(position) == mManHuaKuRecyclerAdapter.TYPE6) {
+                    return 3;
+                }
+                return 1;
+            }
+        });
+        recyclerView_manhuaku.setLayoutManager(layoutManager);
+        recyclerView_manhuaku.setAdapter(mManHuaKuRecyclerAdapter);
+        /*mRetrofitApi.getManHuaKuBean(URLConstants.URL_MAIN_MANHUAKU)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ManHuaKuBean>() {
@@ -125,6 +164,6 @@ public class ManHuaKuFragment extends BaseFragment {
                         recyclerView_manhuaku.setLayoutManager(layoutManager);
                         recyclerView_manhuaku.setAdapter(mManHuaKuRecyclerAdapter);
                     }
-                });
+                });*/
     }
 }
