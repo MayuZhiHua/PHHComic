@@ -24,13 +24,14 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".activity.MainActivity" >
+
+            </activity>
+        <activity android:name=".activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".activity.TestActivity">
 
         </activity>
 
@@ -43,9 +44,7 @@
         <activity android:name=".activity.ManHuaRankActivity" />
         <activity android:name=".activity.SpcialListActivity" />
         <activity android:name=".activity.WebActivity"></activity>
-        <activity android:name=".activity.SearchActivity">
-
-        </activity>
+        <activity android:name=".activity.SearchActivity"></activity>
         <activity android:name=".base.BaseActivity"></activity>
         <activity android:name=".activity.UserActivity" />
         <activity android:name=".activity.LoginActivity" />

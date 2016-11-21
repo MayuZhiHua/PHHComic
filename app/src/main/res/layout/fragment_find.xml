@@ -1,9 +1,18 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ningjiahao.phhcomic.fragment.FindFragment"
-    android:orientation="vertical">
+    >
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout_find"
+        android:orientation="vertical">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -17,7 +26,7 @@
         android:background="@drawable/search_field"
         android:layout_margin="10dp"
         android:textSize="15sp"
-        android:textColorHint="@color/grey"
+        android:textColorHint="@color/gray"
         android:cursorVisible="false"
         />
     <ImageView
@@ -28,32 +37,6 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/navi_search_gray"
         android:layout_marginRight="10dp"/>
-
-
-
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="请输入漫画,作者题材查找作品"
-        android:textStyle="bold"
-        android:background="@drawable/search_field"
-
-        android:layout_margin="10dp"
-        android:textSize="15sp"
-        android:textColorHint="@color/grey"
-        android:cursorVisible="false"
-        />
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/navi_search_gray"
-        android:layout_marginRight="20dp"/>
 
 
 
@@ -69,22 +52,102 @@
        />
 
 </RelativeLayout>
+
+
+
+
+
+
     <GridLayout
         android:id="@+id/find_gridlayout_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="大家都在搜"
-        android:layout_marginLeft="10dp"
-        android:textSize="15sp"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
-
-
-    <GridLayout
-        android:id="@+id/gridlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="80dp"
 
-</LinearLayout>
+        android:columnCount="4"
+        android:layout_marginTop="10dp"
+        >
+
+    </GridLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/textview_theme"
+                android:layout_weight="1"
+                android:text="题材分类"
+                android:gravity="center"
+                android:textColor="#ff4500"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageview_line_rad_theme"
+                android:src="@drawable/line_red"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/textview_content"
+                android:layout_weight="1"
+                android:text="内容分类"
+                android:gravity="center"
+
+                />
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageview_line_red_content"
+                android:src="@drawable/line_red"
+                android:visibility="gone"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_find"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </android.support.v4.view.ViewPager>
+
+
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listview_find"
+        android:layout_marginTop="50dp"
+
+
+        android:background="#ffffffff"></ListView>
+
+
+
+
+
+</RelativeLayout>

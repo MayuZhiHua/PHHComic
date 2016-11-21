@@ -33,7 +33,7 @@ public class ThemeFragment extends BaseFragment {
 
     private ThemeAdapter mThemeAdapter;
 
-    private List<ThemeBean.CBean.SBean>mList;
+    private List<ThemeBean.CBean.SBean>mList=new ArrayList<>();
 
 
     @Override
@@ -64,12 +64,9 @@ public class ThemeFragment extends BaseFragment {
 
                     @Override
                     public void onNext(List<ThemeBean.CBean.SBean> sBeen) {
-                        mList = sBeen;
-                        mThemeAdapter = new ThemeAdapter(getActivity(), mList);
-                        GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
-                        mRecyclerView.setLayoutManager(manager);
-                        mRecyclerView.setAdapter(mThemeAdapter);
+                        mList.addAll(sBeen);
 
+                        mThemeAdapter.notifyDataSetChanged();
                     }
                 });
     }
@@ -86,11 +83,11 @@ public class ThemeFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_theme);
 
-
-        mThemeAdapter=new ThemeAdapter(getActivity(),mList);
-        GridLayoutManager manager=new GridLayoutManager(getActivity(),4);
+        mThemeAdapter = new ThemeAdapter(getActivity(), mList);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mThemeAdapter);
+
 
 
     }

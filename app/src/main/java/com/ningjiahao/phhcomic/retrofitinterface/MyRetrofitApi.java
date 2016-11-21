@@ -1,5 +1,7 @@
 package com.ningjiahao.phhcomic.retrofitinterface;
 
+import com.ningjiahao.phhcomic.bean.DetaiListBean;
+import com.ningjiahao.phhcomic.bean.DetailTitleBean;
 import com.ningjiahao.phhcomic.bean.FansBean;
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
@@ -18,8 +20,8 @@ import com.ningjiahao.phhcomic.bean.ThemeBean;
 import com.ningjiahao.phhcomic.bean.TieZiPlBean;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;
 import com.ningjiahao.phhcomic.bean.UpdateBean;
-import com.ningjiahao.phhcomic.bean.WebBean;
 import com.ningjiahao.phhcomic.bean.UserBean;
+import com.ningjiahao.phhcomic.bean.WebBean;
 import com.ningjiahao.phhcomic.bean.ZanNumBean;
 
 import java.util.Map;
@@ -36,7 +38,6 @@ import rx.Observable;
  */
 
 public interface MyRetrofitApi {
-
     @POST
     Observable<ManHuaKuBean> getManHuaKuBean(@Url String url);
     @GET
@@ -45,22 +46,6 @@ public interface MyRetrofitApi {
     Observable<ZanNumBean> getZanNumBean(@Url String url, @QueryMap Map<String,Object> map);
     @GET
     Observable<ManHuaChapterBean> getManHuaChapterBean(@Url String url, @QueryMap Map<String,Object> map);
-    @GET
-    Observable<ManHuaDiscussBean> getManHuaDiscussBean(@Url String url, @QueryMap Map<String,Object> map);
-    @GET
-    Observable<ManHuaBean> getManHuaBean(@Url String url, @QueryMap Map<String,Object> map);
-    @GET
-    Observable<UpdateBean> getUpdateBean(@Url String url);
-    @GET
-    Observable<RedNewBean> getRedNewBean(@Url String url);
-    @GET
-    Observable<HotRankBean> getHotRankBean(@Url String url);
-    @GET
-    Observable<OverRankBean> getOverRankBean(@Url String url);
-    @GET
-    Observable<SpecialListBean> getSpecialListBean(@Url String url);
-    @GET
-    Observable<WebBean> getWebBean(@Url String url);
     @GET
     Observable<ThemeBean>getThemeData(@Url String url);
 
@@ -78,21 +63,48 @@ public interface MyRetrofitApi {
     Observable<SearchDefaultBean>getSearchDefaultData(@Url String url);
 
     //获得TuiJianBean对象
-    @GET
+   @GET
     Observable<TuiJianBean> getTuiJianBean(@Url String url, @QueryMap() Map<String,String> map);
 
+   @GET
+    Observable<DetailTitleBean>getDetailTitle(@Url String url);
 
-    //获得帖子评论的对象
     @GET
-    Observable<TieZiPlBean> getTieZiPlBean(@Url String url,@QueryMap() Map<String,String> map);
+    Observable<DetaiListBean>getDetailList(@Url String url);
 
-    //获得FansBean对象
+
+
+
+
+
+    @GET
+    Observable<ManHuaDiscussBean> getManHuaDiscussBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<ManHuaBean> getManHuaBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<UpdateBean> getUpdateBean(@Url String url);
+
+    @GET
+    Observable<RedNewBean> getRedNewBean(@Url String url);
+
+    @GET
+    Observable<SpecialListBean> getSpecialListBean(@Url String url);
+
+    @GET
+    Observable<TieZiPlBean> getTieZiPlBean(@Url String url, @QueryMap() Map<String,String> map);
+
+
+    @GET
+    Observable<UserBean> getUserBean(@Url String url, @QueryMap() Map<String,String> map);
+
+    @GET
+    Observable<WebBean> getWebBean(@Url String url);
+
+    @GET
+    Observable<HotRankBean> getHotRankBean(@Url String url);
+    @GET
+    Observable<OverRankBean> getOverRankBean(@Url String url);
+
     @GET
     Observable<FansBean> getFansBean(@Url String url, @QueryMap() Map<String,String> map);
-
-    //获得UserBan对象
-    @GET
-    Observable<UserBean> getUserBean(@Url String url,@QueryMap() Map<String,String> map);
-
-
 }

@@ -1,6 +1,7 @@
 package com.ningjiahao.phhcomic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.activity.SearchActivity;
 import com.ningjiahao.phhcomic.bean.ThemeBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 import com.ningjiahao.phhcomic.helper.RecyclerViewAdapterHelper;
@@ -41,14 +43,27 @@ public class ThemeAdapter extends RecyclerViewAdapterHelper<ThemeBean.CBean.SBea
     }
 
     @Override
-    public void onBindMyViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindMyViewHolder(RecyclerView.ViewHolder holder, final int position) {
         Log.e("tag",mList.get(0).getName());
-        ((ThemeHolder)holder).textView_name.setText(mList.get(position).getName());
+        final String name=mList.get(position).getName();
+        ((ThemeHolder)holder).textView_name.setText(name);
         ((ThemeHolder)holder).textView_part.setText(mList.get(position).getComicnum()+"部");
-
         Glide.with(mContext).load(URLConstants.BASE_IMAGE_URL+mList.get(position).getIconr())
                 .into(((ThemeHolder)holder).imageView_theme);
 
+        ((ThemeHolder)holder).itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(mContext, SearchActivity.class);
+                intent.putExtra(URLConstants.KEY_SEARCH_TYPE,"theme");
+                intent.putExtra(URLConstants.KEY_SEARCH,name);
+                intent.putExtra(URLConstants.KEY_SEARCH_PAGE,mList.get(position).getId());
+                mContext.startActivity(intent);
+
+            }
+
+        });
 
 
 

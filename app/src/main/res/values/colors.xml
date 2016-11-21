@@ -150,6 +150,5 @@
     <color name="navy">#000080</color><!--海军色 -->
     <color name="black">#000000</color><!--黑色 -->
 
-
-
+<color name="gray">#22000000</color>
 </resources>

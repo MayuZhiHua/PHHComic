@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ningjiahao.phhcomic.ILoadSearchData;
 import com.ningjiahao.phhcomic.R;
-import com.ningjiahao.phhcomic.activity.ManHuaDetailActivity;
+
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
 import com.ningjiahao.phhcomic.bean.SearchResultBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
+
 
 import java.util.List;
 
@@ -36,34 +40,38 @@ public class SearchAdapter extends RecyclerView.Adapter{
 
     public static final int TYPE3=3;
 
+    public static final int TYPE4=4;
+
     private Context mContext;
     private List<Object>mList;
     private LayoutInflater mInflater;
-
     private String search;
-
     private int type;
+    private ILoadSearchData iLoadSearchData;
 
-    public SearchAdapter(List<Object> mList, Context mContext,String search,int type) {
+
+    public SearchAdapter(List<Object> mList, Context mContext,String search,int type,ILoadSearchData iLoadSearchData) {
         this.mList = mList;
         this.mContext = mContext;
         mInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.search=search;
         this.type=type;
-        Log.e("JJJ",type+"");
+        this.iLoadSearchData=iLoadSearchData;
+
 
     }
 
     @Override
     public int getItemViewType(int position) {
-      if (position==0){
-          return TYPE1;
-      }else if(type==TYPE2){
+        if (position == 0&&type!=TYPE4) {
+            return TYPE1;
+        } else if (type == TYPE2) {
 
-          return TYPE2;
-      }else {
-          return TYPE3;
-      }
+            return TYPE2;
+        } else {
+            return TYPE3;
+        }
+
 
 
     }
@@ -97,8 +105,41 @@ return null;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ViewHolder1) {
+
+            ((ViewHolder1)holder).editText_search.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    search=((ViewHolder1)holder).editText_search.getEditableText().toString();
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+            ((ViewHolder1)holder).editText_search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((ViewHolder1)holder).editText_search.setCursorVisible(true);
+
+                }
+            });
+            ((ViewHolder1)holder).editText_search.setText(search);
+            ((ViewHolder1)holder).imageView_find.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String text=((ViewHolder1)holder).editText_search.getEditableText().toString();
+                    iLoadSearchData.updata(text);
+
+                }
+            });
             if (!TextUtils.isEmpty(search) & type == TYPE2) {
                 ((ViewHolder1) holder).textView_result.setText("一共" + mList.size() + "个结果");
             }else if(!TextUtils.isEmpty(search)&type==TYPE3){
@@ -122,33 +163,50 @@ return null;
             ((ViewHolder2)holder).itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent =new Intent();
-                    intent.setClass(mContext, ManHuaDetailActivity.class);
-                    String id=((SearchResultBean.CBean.SBean)(mList.get(position-1))).getId();
-                    intent.putExtra("key",id);
-                    mContext.startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(mContext, DetailActivity.class);
+//                    String id=((SearchResultBean.CBean.SBean)(mList.get(position-1))).getId();
+//                    intent.putExtra(URLConstants.KEY_DETAIL_ID,id);
+//                    mContext.startActivity(intent);
                 }
             });
         }
         if (holder instanceof ViewHolder3){
 
-            Glide.with(mContext)
-                    .load(URLConstants.BASE_IMAGE_URL+
-                            ((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getAppicons())
+              int index=0;
+                        switch (type){
+                            case 3:
+                                index=position-1;
+                                Glide.with(mContext)
+                                        .load(URLConstants.BASE_IMAGE_URL+
+                                                ((SearchDefaultBean.CBean.SBean)(mList.get(index))).getAppicons())
 
-                    .into(((ViewHolder3)holder).imageView);
-            ((ViewHolder3)holder).textView_name.setText(((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getName());
+                                        .into(((ViewHolder3)holder).imageView);
+                                ((ViewHolder3)holder).textView_name.setText(((SearchDefaultBean.CBean.SBean)(mList.get(index))).getName());
 
-            ((ViewHolder3)holder).textView_partname.setText(((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getPartname());
-            ((ViewHolder3)holder).textView_score.setText(((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getScore());
+                                ((ViewHolder3)holder).textView_partname.setText(((SearchDefaultBean.CBean.SBean)(mList.get(index))).getPartname());
+                                ((ViewHolder3)holder).textView_score.setText(((SearchDefaultBean.CBean.SBean)(mList.get(index))).getScore());
+
+                                break;
+                            case 4:
+                                index=position;
+                                Glide.with(mContext)
+                                        .load(URLConstants.BASE_IMAGE_URL+
+                                                ((SearchResultBean.CBean.SBean)(mList.get(index))).getAppicons())
+
+                                        .into(((ViewHolder3)holder).imageView);
+                                ((ViewHolder3)holder).textView_name.setText(((SearchResultBean.CBean.SBean)(mList.get(index))).getName());
+
+                                ((ViewHolder3)holder).textView_partname.setText(((SearchResultBean.CBean.SBean)(mList.get(index))).getPartname());
+                                ((ViewHolder3)holder).textView_score.setText(((SearchResultBean.CBean.SBean)(mList.get(index))).getScore());
+
+                        }
             ((ViewHolder3)holder).itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent();
-                    intent.setClass(mContext,ManHuaDetailActivity.class);
-                    String id =((SearchDefaultBean.CBean.SBean)(mList.get(position-1))).getId();
-                    intent.putExtra("key",id);
-                    mContext.startActivity(intent);
+
+
+
                 }
             });
 
@@ -158,17 +216,25 @@ return null;
 
     @Override
     public int getItemCount() {
-        return mList.size()+1;
+
+                if(type==TYPE4){
+               return mList.size();
+                }
+        else {
+                    return mList.size()+1;
+                }
     }
 
     class ViewHolder1 extends RecyclerView.ViewHolder{
         TextView textView_result,textView_recommend;
         EditText editText_search;
+        ImageView imageView_find;
         public ViewHolder1(View itemView) {
             super(itemView);
             textView_result= (TextView) itemView.findViewById(R.id.textview_search_result);
             textView_recommend= (TextView) itemView.findViewById(R.id.textview_search_recommend);
             editText_search= (EditText) itemView.findViewById(R.id.edittext_search);
+            imageView_find= (ImageView) itemView.findViewById(R.id.imageview_search_find);
         }
     }
 

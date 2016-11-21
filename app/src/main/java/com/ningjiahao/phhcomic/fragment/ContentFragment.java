@@ -2,10 +2,12 @@ package com.ningjiahao.phhcomic.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.activity.SearchActivity;
 import com.ningjiahao.phhcomic.base.BaseFragment;
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
@@ -75,13 +78,35 @@ public class ContentFragment extends BaseFragment {
                     @Override
                     public void onNext(FindContentTitleBean findContentTitleBean) {
                            mList=findContentTitleBean.getC().getS();
-                           for (int i=0;i<11;i++){
+                           for ( int i=0;i<11;i++){
                             View itemView=mInflater.inflate(R.layout.item_content,null,false);
                             TextView textView= (TextView) itemView.findViewById(R.id.textview_love);
-                            textView.setText(mList.get(i).getName());
+                               final String text=mList.get(i).getName();
+                            textView.setText(text);
                             textView.setTextColor(Color.parseColor("#ff4500"));
                             TextView textView1= (TextView) itemView.findViewById(R.id.textview_shuzi);
                             textView1.setText(mList.get(i).getComicnum());
+
+                               itemView.setTag(String.valueOf(i+1));
+
+
+                               itemView.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View view) {
+                                       Intent intent=new Intent();
+                                       intent.setClass(getActivity(), SearchActivity.class);
+                                       intent.putExtra(URLConstants.KEY_SEARCH,text);
+                                       intent.putExtra(URLConstants.KEY_SEARCH_TYPE,"content");
+                                       String page= (String) view.getTag();
+                                       intent.putExtra(URLConstants.KEY_SEARCH_PAGE,page);
+                                       Log.e("CCC","page="+page);
+                                       Log.e("BBB",text);
+                                       startActivity(intent);
+
+                                   }
+                               });
+
+
                             mGridLayout.addView(itemView);
                         }
                     }

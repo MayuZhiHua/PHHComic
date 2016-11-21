@@ -21,6 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/textview_search_back"
             android:text="返回"
             android:textColor="#ff4500"
             android:layout_centerVertical="true"
@@ -31,11 +32,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/textview_search_title"
             android:text="搜索"
             android:textColor="#ff4500"
             android:textSize="20sp"
             android:layout_centerInParent="true"
             android:layout_margin="7dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageview_search_category"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/textview_search_title"
+            android:src="@drawable/category_orage_down"/>
 
     </RelativeLayout>
 

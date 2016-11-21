@@ -14,12 +14,13 @@
         android:background="@drawable/search_field"
         android:layout_margin="10dp"
         android:textSize="15sp"
-        android:textColorHint="@color/grey"
+        android:textColorHint="@color/gray"
         android:cursorVisible="false"
         />
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:id="@+id/imageview_search_find"
         android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:src="@drawable/navi_search_gray"
