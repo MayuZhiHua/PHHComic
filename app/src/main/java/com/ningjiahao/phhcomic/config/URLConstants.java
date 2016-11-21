@@ -18,11 +18,11 @@ public class URLConstants {
     public static final String URL_RED_DATA="http://api.lookmanhua.com/lists/redcomic?page=%d&size=20&from=4";
     public static final String URL_HOT_RANK_DATA="http://api.lookmanhua.com/lists/hotreview?token=&page=1&size=20&from=4";
     public static final String URL_OVER_RANK_DATA="http://api.lookmanhua.com/lists/overcomicpv?token=&page=1&size=20&from=4";
-    public static final String FIND_THEME_URL="http://api.lookmanhua.com/lists/topic?page=1&size=100&from=4";
+
     public static final String URL_SPECIAL_DATA="http://api.lookmanhua.com/lists/special?page=1&size=100&from=4";
     public static final String URL_WEB_DATA="http://api.lookmanhua.com/content/special?specialid=%d&from=4";
 
-    public static final String BASE_IMAGE_URL="http://static.moyougames.com/";
+
 
 
     public static final String FIND_SEARCH_TITLE_URL= "http://api.lookmanhua.com/customized/keysearch";

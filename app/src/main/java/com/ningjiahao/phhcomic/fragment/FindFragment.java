@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ningjiahao.phhcomic.R;
-<<<<<<< Updated upstream
+
 import com.ningjiahao.phhcomic.activity.SearchActivity;
 import com.ningjiahao.phhcomic.adapter.FindPagerAdapter;
 import com.ningjiahao.phhcomic.base.BaseFragment;
@@ -31,29 +31,29 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-=======
+
 import com.ningjiahao.phhcomic.adapter.FindPagerAdapter;
 import com.ningjiahao.phhcomic.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> Stashed changes
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-<<<<<<< Updated upstream
+
 public class FindFragment extends BaseFragment implements View.OnClickListener{
-=======
-public class FindFragment extends BaseFragment {
->>>>>>> Stashed changes
+
+
+
     private ViewPager mViewPager;
 
     private List<Fragment>mList;
 
     private FindPagerAdapter mFindPagerAdapter;
 
-<<<<<<< Updated upstream
+
     private TextView textView_theme,textView_content;
 
     private ImageView imageView_theme,imageView_content,imageView_search;
@@ -66,13 +66,12 @@ public class FindFragment extends BaseFragment {
 
     private EditText mEditText;
 
-=======
->>>>>>> Stashed changes
+
+
 
 
     public FindFragment() {
 
-<<<<<<< Updated upstream
     }
 
     @Override
@@ -125,18 +124,9 @@ public class FindFragment extends BaseFragment {
         mList=new ArrayList<>();
         mList.add(themeFragment);
         mList.add(contentFragment);
-=======
+
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ThemeFragment themeFragment=new ThemeFragment();
-        mList=new ArrayList<>();
-        mList.add(themeFragment);
->>>>>>> Stashed changes
-        mFindPagerAdapter=new FindPagerAdapter(getActivity().getSupportFragmentManager(),mList);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -148,7 +138,7 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-<<<<<<< Updated upstream
+
         initView(view);
     }
 
@@ -163,8 +153,7 @@ public class FindFragment extends BaseFragment {
         textView_content.setOnClickListener(this);
         imageView_theme= (ImageView) view.findViewById(R.id.imageview_line_rad_theme);
         imageView_content= (ImageView) view.findViewById(R.id.imageview_line_red_content);
-=======
->>>>>>> Stashed changes
+
         mViewPager= (ViewPager) view.findViewById(R.id.viewpager_find);
         mViewPager.setAdapter(mFindPagerAdapter);
 
@@ -176,14 +165,13 @@ public class FindFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-<<<<<<< Updated upstream
+
                 if (position==0){
                     title1();
                 }else {
                     title2();
                 }
-=======
->>>>>>> Stashed changes
+
 
             }
 
@@ -192,7 +180,6 @@ public class FindFragment extends BaseFragment {
 
             }
         });
-<<<<<<< Updated upstream
 
 
     }
@@ -232,7 +219,7 @@ public class FindFragment extends BaseFragment {
         mViewPager.setCurrentItem(0);
     }
 
-=======
+
     }
->>>>>>> Stashed changes
+
 }
