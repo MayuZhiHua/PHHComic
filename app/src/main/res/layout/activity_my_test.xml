@@ -4,7 +4,7 @@
     android:id="@+id/activity_my_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ningjiahao.phhcomic.activity.MyTestActivity">
+    tools:context="com.ningjiahao.phhcomic.activity.YzhTestActivity">
     <fragment
         android:id="@+id/fragment_test"
         android:layout_width="match_parent"

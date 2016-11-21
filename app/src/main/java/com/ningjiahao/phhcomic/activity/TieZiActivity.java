@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,12 +18,26 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.adapter.TieZiPlRecyclerAdapter;
+import com.ningjiahao.phhcomic.base.BaseActivity;
+import com.ningjiahao.phhcomic.bean.TieZiPlBean;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;
+import com.ningjiahao.phhcomic.config.URLConstants;
+import com.ningjiahao.phhcomic.decoration.DividerItemDecoration;
 import com.ningjiahao.phhcomic.helper.TimeHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class TieZiActivity extends AppCompatActivity {
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+public class TieZiActivity extends BaseActivity implements View.OnClickListener{
     private Context mContext = this;
     private TuiJianBean.CBean cBean;
     private Toolbar mToolbar ;
@@ -34,6 +49,9 @@ public class TieZiActivity extends AppCompatActivity {
             imageView_quanzi_photo8;
     private LinearLayout linearLayout_tupian,linearLayout_item0,linearLayout_item1,linearLayout_item2;
     private RecyclerView recyclerView_tiezi;
+    private TieZiPlRecyclerAdapter adapter;
+    private List<TieZiPlBean.CBean> cBeanList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +64,6 @@ public class TieZiActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         recyclerView_tiezi = (RecyclerView) findViewById(R.id.recyclerView_tiezi);
-
     }
 
     private void initView() {
@@ -71,7 +88,16 @@ public class TieZiActivity extends AppCompatActivity {
         linearLayout_item2 = (LinearLayout) findViewById(R.id.linearLayout_item2);
         linearLayout_item0 = (LinearLayout) findViewById(R.id.linearLayout_item0);
         operateView();
-
+        imageView_head_tiezi.setOnClickListener(this);
+       /* imageView_quanzi_photo0.setOnClickListener(this);
+        imageView_quanzi_photo1.setOnClickListener(this);
+        imageView_quanzi_photo2.setOnClickListener(this);
+        imageView_quanzi_photo3.setOnClickListener(this);
+        imageView_quanzi_photo4.setOnClickListener(this);
+        imageView_quanzi_photo5.setOnClickListener(this);
+        imageView_quanzi_photo6.setOnClickListener(this);
+        imageView_quanzi_photo7.setOnClickListener(this);
+        imageView_quanzi_photo8.setOnClickListener(this);*/
     }
 
     //对View进行赋值
@@ -243,11 +269,51 @@ public class TieZiActivity extends AppCompatActivity {
     private void initData() {
         Intent intent = getIntent();
         cBean = (TuiJianBean.CBean) intent.getSerializableExtra("CBean");
+        String subid = cBean.getId();
+        //获得时间
+        Date date = new Date();
+        Long time =date.getTime();
+        //获得评论的数据
+        Map<String,String> map=new HashMap<>();
+        map.put("proid","1");
+        map.put("subno","9");
+        map.put("subid",subid);
+        map.put("usert","");
+        map.put("start",""+time/1000);
+        map.put("count","10");
+        map.put("from","4");
+        myRetrofitApi.getTieZiPlBean(URLConstants.TIEZIPL_URL,map)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<TieZiPlBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("TieZiActivity","获取帖子评论的Bean出错");
+                    }
+
+                    @Override
+                    public void onNext(TieZiPlBean tieZiPlBean) {
+                        //Log.e("TieZiActivity",tieZiPlBean.getC().get(0).getContent());
+                        cBeanList.addAll(tieZiPlBean.getC());
+                        LinearLayoutManager manager =new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+                        adapter = new TieZiPlRecyclerAdapter(mContext,cBeanList);
+                        recyclerView_tiezi.setAdapter(adapter);
+                        recyclerView_tiezi.setLayoutManager(manager);
+                        DividerItemDecoration itemDecoration=new DividerItemDecoration(mContext,1);
+                        recyclerView_tiezi.addItemDecoration(itemDecoration);
+                    }
+                });
     }
 
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolBar_tiezi);
         mToolbar.setTitle("帖子");
+        mToolbar.setTitleTextAppearance(this,R.style.MyToolBar);
         setSupportActionBar(mToolbar);
         ActionBar actionBar=getSupportActionBar();
         //给左上角图标的左边加上一个返回的图标
@@ -265,5 +331,19 @@ public class TieZiActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent =new Intent();
+        List<String> attach = cBean.getAttach();
+        switch (v.getId()) {
+            case R.id.imageView_head_tiezi:
+                intent.setClass(mContext, UserActivity.class);
+                intent.putExtra("oid", cBean.getUserext().getOid());
+                intent.putExtra("ct", cBean.getUserext().getCt());
+                break;
+        }
+        startActivity(intent);
     }
 }

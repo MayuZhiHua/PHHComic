@@ -1,5 +1,6 @@
 package com.ningjiahao.phhcomic.retrofitinterface;
 
+import com.ningjiahao.phhcomic.bean.FansBean;
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
 import com.ningjiahao.phhcomic.bean.HotRankBean;
@@ -14,9 +15,11 @@ import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
 import com.ningjiahao.phhcomic.bean.SearchResultBean;
 import com.ningjiahao.phhcomic.bean.SpecialListBean;
 import com.ningjiahao.phhcomic.bean.ThemeBean;
+import com.ningjiahao.phhcomic.bean.TieZiPlBean;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;
 import com.ningjiahao.phhcomic.bean.UpdateBean;
 import com.ningjiahao.phhcomic.bean.WebBean;
+import com.ningjiahao.phhcomic.bean.UserBean;
 import com.ningjiahao.phhcomic.bean.ZanNumBean;
 
 import java.util.Map;
@@ -78,4 +81,16 @@ public interface MyRetrofitApi {
     @GET
     Observable<TuiJianBean> getTuiJianBean(@Url String url, @QueryMap() Map<String,String> map);
 
+
+    //获得帖子评论的对象
+    @GET
+    Observable<TieZiPlBean> getTieZiPlBean(@Url String url,@QueryMap() Map<String,String> map);
+
+    //获得FansBean对象
+    @GET
+    Observable<FansBean> getFansBean(@Url String url,@QueryMap() Map<String,String> map);
+
+    //获得UserBan对象
+    @GET
+    Observable<UserBean> getUserBean(@Url String url,@QueryMap() Map<String,String> map);
 }

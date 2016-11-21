@@ -6,11 +6,11 @@
     tools:context="com.ningjiahao.phhcomic.fragment.MyAttentionFragment">
 
     <ImageView
-        android:id="@+id/imageView_myattention"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="fitCenter"
-        />
+    android:id="@+id/imageView_myattention"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:scaleType="fitCenter"
+    />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"

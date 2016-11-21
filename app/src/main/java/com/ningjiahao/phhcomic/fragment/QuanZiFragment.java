@@ -2,17 +2,18 @@ package com.ningjiahao.phhcomic.fragment;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ningjiahao.phhcomic.QuanZiFragmentAdapter;
+import com.ningjiahao.phhcomic.activity.LoginActivity;
+import com.ningjiahao.phhcomic.adapter.QuanZiFragmentAdapter;
 import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.base.BaseFragment;
 import com.ningjiahao.phhcomic.widget.NoScrollViewPager;
@@ -58,7 +59,9 @@ public class QuanZiFragment extends BaseFragment {
                     //添加按钮1
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        //调到登录页面
+                        Intent intent = new Intent(mContext, LoginActivity.class);
+                        startActivity(intent);
                     }
                 })
                 //设置取消按钮
@@ -74,6 +77,9 @@ public class QuanZiFragment extends BaseFragment {
 
     private void initData() {
         TuiJianFragment tuiJianFragment=new TuiJianFragment();
+        Bundle bundle=new Bundle();
+        bundle.putInt("QuanZiFragment",0);
+        tuiJianFragment.setArguments(bundle);
         ZuiXinFragment zuiXinFragment = new ZuiXinFragment();
         MyAttentionFragment myAttentionFragment = new MyAttentionFragment();
         fragmentList.add(tuiJianFragment);

@@ -1,4 +1,4 @@
-package com.ningjiahao.phhcomic;
+package com.ningjiahao.phhcomic.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

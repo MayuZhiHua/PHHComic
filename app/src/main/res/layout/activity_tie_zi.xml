@@ -12,15 +12,14 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        app:title="帖子"
-       app:titleTextColor="@color/orangered"
-       />
+       app:titleTextColor="@color/orangered" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,11 +102,17 @@
                     android:gravity="center"
                     android:drawableStart="@drawable/comments_02" />
             </LinearLayout>
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="评论"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
+            <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView_tiezi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+        </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

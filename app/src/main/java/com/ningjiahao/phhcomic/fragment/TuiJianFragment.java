@@ -9,21 +9,20 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ningjiahao.phhcomic.QuanZiRecyclerAdapter;
+import com.ningjiahao.phhcomic.adapter.QuanZiRecyclerAdapter;
 import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.base.BaseFragment;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observer;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -62,7 +61,7 @@ public class TuiJianFragment extends BaseFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){//RecyclerView滑动到底部了
                     page++;
                     int lastVisiblePosition = manager.findLastVisibleItemPosition();
                     if(lastVisiblePosition >= manager.getItemCount() - 1){
@@ -159,6 +158,7 @@ public class TuiJianFragment extends BaseFragment {
         map.put("page","0");
         map.put("count","15");
         map.put("from","4");
+
         mRetrofitApi.getTuiJianBean(URLConstants.TUIJIAN_URL,map)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,4 +1,4 @@
-package com.ningjiahao.phhcomic;
+package com.ningjiahao.phhcomic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.activity.PhotoViewActivity;
 import com.ningjiahao.phhcomic.activity.TieZiActivity;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;

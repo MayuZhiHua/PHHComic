@@ -36,7 +36,12 @@ public class URLConstants {
     public static final String KEY_SEARCH="KEY_SEARCH";
 
     public static final String DEFAULT_SEARCH_URL= "http://api.lookmanhua.com/lists/redcomic?page=1&size=50&from=4";
+
     public static final String TUIJIAN_URL="http://common.moyougames.com/Posts/mostpvlist";
     public static final String ZIUXIN_URL = "http://common.moyougames.com/Posts/showall";
-
+    public static final String TIEZIPL_URL = "http://common.moyougames.com/Discuss/discussion";
+    public static final String FABU_URL ="http://common.moyougames.com/Posts/hisposts";
+    public static final String FANS_URL = "http://common.moyougames.com/Follow/hisfans";
+    public static final String FOLLOW_URL = "http://common.moyougames.com/Follow/hisfollowlist";
+    public static final String USER_URL = "http://common.moyougames.com/User/hisinfo";
 }
