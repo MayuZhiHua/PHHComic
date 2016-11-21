@@ -162,12 +162,6 @@ public class SearchActivity extends BaseActivity{
 
     private void initView() {
         mRecyclerview= (RecyclerView) findViewById(R.id.recyclerview_search);
-
-
-
-
-
-
     }
 
 

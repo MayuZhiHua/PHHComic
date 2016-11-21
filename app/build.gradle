@@ -5,7 +5,11 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.ningjiahao.phhcomic"
+<<<<<<< Updated upstream
         minSdkVersion 17
+=======
+        minSdkVersion 16
+>>>>>>> Stashed changes
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"

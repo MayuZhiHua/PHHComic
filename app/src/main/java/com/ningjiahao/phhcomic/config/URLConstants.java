@@ -39,4 +39,12 @@ public class URLConstants {
     public static final String TUIJIAN_URL="http://common.moyougames.com/Posts/mostpvlist";
     public static final String ZIUXIN_URL = "http://common.moyougames.com/Posts/showall";
 
+
+    public static final String FIND_THEME_URL="http://api.lookmanhua.com/lists/topic?page=1&size=100&from=4";
+
+    public static final String BASE_IMAGE_URL="http://static.moyougames.com/";
+
+
+
+
 }

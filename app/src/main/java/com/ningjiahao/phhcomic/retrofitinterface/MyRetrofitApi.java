@@ -1,5 +1,6 @@
 package com.ningjiahao.phhcomic.retrofitinterface;
 
+<<<<<<< Updated upstream
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
 import com.ningjiahao.phhcomic.bean.HotRankBean;
@@ -28,12 +29,20 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import rx.Observable;
 import rx.Observer;
+=======
+import com.ningjiahao.phhcomic.bean.ThemeBean;
+
+import retrofit2.http.GET;
+import retrofit2.http.Url;
+import rx.Observable;
+>>>>>>> Stashed changes
 
 /**
  * Created by 甯宁寧 on 2016-11-14.
  */
 
 public interface MyRetrofitApi {
+<<<<<<< Updated upstream
     @POST
     Observable<ManHuaKuBean> getManHuaKuBean(@Url String url);
     @GET
@@ -78,4 +87,9 @@ public interface MyRetrofitApi {
     @GET
     Observable<TuiJianBean> getTuiJianBean(@Url String url, @QueryMap() Map<String,String> map);
 
+=======
+
+    @GET
+    Observable<ThemeBean>getThemeData(@Url String url);
+>>>>>>> Stashed changes
 }
