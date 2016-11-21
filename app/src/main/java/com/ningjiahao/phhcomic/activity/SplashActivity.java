@@ -58,6 +58,7 @@ public class SplashActivity extends BaseActivity {
                         Intent intent=new Intent(mContext,MainActivity.class);
                         intent.putExtra("key",manHuaKuBean);
                         mContext.startActivity(intent);
+                        SplashActivity.this.finish();
                     }
                 });
     }
