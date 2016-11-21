@@ -10,12 +10,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="150dp">
 
         <ImageView
             android:id="@+id/manhuadetail_image"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="150dp"
             android:scaleType="fitXY" />
 
         <Button
@@ -144,15 +144,67 @@
             android:layout_width="45dp"
             android:layout_height="20dp"
             android:background="@drawable/comic_collection"
+            android:onClick="clickView"
             android:layout_marginRight="20dp"/>
 
     </LinearLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/manhuadetail_tablayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        app:tabIndicatorColor="@color/orangered" />
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/manhuadetail_chapter"
+                android:layout_weight="1"
+                android:text="章节"
+                android:gravity="center"
+                android:textColor="#ff4500"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageview_line_rad_detail"
+                android:src="@drawable/line_red"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/manhuadetail_discuss"
+                android:layout_weight="1"
+                android:text="评论"
+                android:gravity="center"
+
+                />
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageview_line_red_discussdetail"
+                android:src="@drawable/line_red"
+                android:visibility="gone"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/manhuadetail_viewpager"

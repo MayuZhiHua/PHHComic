@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
@@ -56,6 +57,12 @@ public class itemRecyclerAdapter extends RecyclerView.Adapter<itemRecyclerAdapte
             recycler_item_image = (ImageView) itemView.findViewById(R.id.recycler_item_image);
             recycler_item_numtxt = (TextView) itemView.findViewById(R.id.recycler_item_numtxt);
             recycler_item_name = (TextView) itemView.findViewById(R.id.recycler_item_name);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "点击了"+list.get(getPosition()).getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

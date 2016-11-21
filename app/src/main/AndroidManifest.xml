@@ -17,11 +17,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".activity.MyTestActivity">
-
-        </activity>
+        <activity android:name=".activity.MyTestActivity" />
+        <activity android:name=".activity.ManHuaDetailActivity" />
+        <activity
+            android:name=".activity.ReadManHuaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.UpdateActivity" />
+        <activity android:name=".activity.RedNewManHuaActivity" />
+        <activity android:name=".activity.ManHuaRankActivity" />
+        <activity android:name=".activity.SpcialListActivity" />
+        <activity android:name=".activity.WebActivity"></activity>
     </application>
 
 </manifest>

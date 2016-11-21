@@ -10,8 +10,17 @@ public class URLConstants {
     public static final String URL_DETAIL_MANHUA="http://api.lookmanhua.com/content/comic";
     public static final String URL_ZANNUM="http://common.moyougames.com/Show/listpage";
     public static final String URL_CHAPTERLIST="http://api.lookmanhua.com/lists/comicpart";
-
+    public static final String URL_MANHUADISCUSS="http://common.moyougames.com/Discuss/discussionall";
+    public static final String URL_MANHUA="http://api.lookmanhua.com/content/comicpart";
+    public static final String URL_UPDATE_WEEK="http://api.lookmanhua.com/lists/week?page=%d&size=12&w=%d&from=4";
+    public static final String URL_UPDATE_OVER="http://api.lookmanhua.com/lists/overcomic?size=12&page=%d&from=4&imei=356114061870191";
+    public static final String URL_NEW_DATA="http://api.lookmanhua.com/lists/newcomic?page=%d&size=20&from=4";
+    public static final String URL_RED_DATA="http://api.lookmanhua.com/lists/redcomic?page=%d&size=20&from=4";
+    public static final String URL_HOT_RANK_DATA="http://api.lookmanhua.com/lists/hotreview?token=&page=1&size=20&from=4";
+    public static final String URL_OVER_RANK_DATA="http://api.lookmanhua.com/lists/overcomicpv?token=&page=1&size=20&from=4";
     public static final String FIND_THEME_URL="http://api.lookmanhua.com/lists/topic?page=1&size=100&from=4";
+    public static final String URL_SPECIAL_DATA="http://api.lookmanhua.com/lists/special?page=1&size=100&from=4";
+    public static final String URL_WEB_DATA="http://api.lookmanhua.com/content/special?specialid=%d&from=4";
 
     public static final String BASE_IMAGE_URL="http://static.moyougames.com/";
 

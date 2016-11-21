@@ -19,7 +19,13 @@ import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
 import com.ningjiahao.phhcomic.activity.MainActivity;
 import com.ningjiahao.phhcomic.activity.ManHuaDetailActivity;
+import com.ningjiahao.phhcomic.activity.ManHuaRankActivity;
+import com.ningjiahao.phhcomic.activity.RedNewManHuaActivity;
+import com.ningjiahao.phhcomic.activity.SpcialListActivity;
+import com.ningjiahao.phhcomic.activity.UpdateActivity;
+import com.ningjiahao.phhcomic.activity.WebActivity;
 import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
+import com.ningjiahao.phhcomic.bean.RedNewBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 import com.ningjiahao.phhcomic.helper.RecyclerViewAdapterHelper;
 
@@ -55,6 +61,7 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
     private Handler adHandler = new Handler();
     private ADRunnable adrun = new ADRunnable();
     private List<ManHuaKuBean.CBean.SpecialBean> specialData;
+    public static int j;
 
     public ManHuaKuRecyclerAdapter(Context context, List<Object> list, List<ManHuaKuBean.CBean.CarouselBean> pagerData,
                                    List<ManHuaKuBean.CBean.TopicBean> itemRecycler, List<ManHuaKuBean.CBean.SpecialBean> specialData) {
@@ -148,7 +155,7 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
                     Glide.with(mContext).load(URLConstants.IMAGE_BASE_URL + pagerData.get(i).getSrc()).into(iv);
                     viewList.add(iv);
                 }
-                mManHuaKuPagerAdapter = new ManHuaKuViewPagerAdapter(viewList);
+                mManHuaKuPagerAdapter = new ManHuaKuViewPagerAdapter(viewList,pagerData,mContext);
                 manhuaku_viewpager.setAdapter(mManHuaKuPagerAdapter);
                 initDot();
                 setPager();
@@ -305,19 +312,22 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
             manhuaku_radio_project.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "点击了project", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(mContext, SpcialListActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
             manhuaku_radio_rank.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "点击了rank", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(mContext, ManHuaRankActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
             manhuaku_radio_update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "点击了update", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(mContext, UpdateActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }
@@ -332,7 +342,26 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "点击了标题" + mList.get(getPosition()), Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent();
+                    switch ((String)mList.get(getPosition())){
+                        case "最热漫画":
+                            intent.putExtra("key","最热漫画");
+                            intent.setClass(mContext,RedNewManHuaActivity.class);
+                            break;
+                        case "最新漫画":
+                            intent.putExtra("key","最新漫画");
+                            intent.setClass(mContext,RedNewManHuaActivity.class);
+                            break;
+                        case "每日更新":
+                            intent.setClass(mContext,UpdateActivity.class);
+                            break;
+                        case "漫画题材":
+                            break;
+                        case "专题":
+                            intent.setClass(mContext,SpcialListActivity.class);
+                            break;
+                    }
+                    mContext.startActivity(intent);
                 }
             });
         }
@@ -408,13 +437,21 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
             manhuaku_item_special2name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(mContext, WebActivity.class);
+                    ManHuaKuBean.CBean.SpecialBean MCS=specialData.get(1);
+                    int id=Integer.valueOf(MCS.getId());
+                    intent.putExtra("key",id);
+                    mContext.startActivity(intent);
                 }
             });
             manhuaku_item_specialimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(mContext, WebActivity.class);
+                    ManHuaKuBean.CBean.SpecialBean MCS= specialData.get(0);
+                    int id=Integer.valueOf(MCS.getId());
+                    intent.putExtra("key",id);
+                    mContext.startActivity(intent);
                 }
             });
         }
@@ -432,7 +469,7 @@ public class ManHuaKuRecyclerAdapter extends RecyclerViewAdapterHelper<Object> {
         public void run() {
             int currentPosition = manhuaku_viewpager.getCurrentItem(); //获得当前的位置
             currentPosition++;
-            if (currentPosition > 4) {
+            if (currentPosition > pagerData.size()-1) {
                 currentPosition = 0;
             }
             manhuaku_viewpager.setCurrentItem(currentPosition);//重新设置位置

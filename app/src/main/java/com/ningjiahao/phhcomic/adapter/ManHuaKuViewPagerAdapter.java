@@ -1,8 +1,14 @@
 package com.ningjiahao.phhcomic.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ningjiahao.phhcomic.activity.ManHuaDetailActivity;
+import com.ningjiahao.phhcomic.activity.WebActivity;
+import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
 
 import java.util.List;
 
@@ -12,9 +18,13 @@ import java.util.List;
 
 public class ManHuaKuViewPagerAdapter extends PagerAdapter {
     private List<View> list;
+    private List<ManHuaKuBean.CBean.CarouselBean> pagerData;
+    private Context mContext;
 
-    public ManHuaKuViewPagerAdapter(List<View> list) {
+    public ManHuaKuViewPagerAdapter(List<View> list,List<ManHuaKuBean.CBean.CarouselBean> pagerData,Context mContext) {
         this.list = list;
+        this.pagerData=pagerData;
+        this.mContext=mContext;
     }
 
     @Override
@@ -28,10 +38,26 @@ public class ManHuaKuViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(final ViewGroup container, final int position) {
         View view = list.get(position);
-        container.addView(view);
-        return view;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent();
+                        if(pagerData.get(position).getLink().contains("chapter/comicid")){
+                            intent.setClass(mContext,ManHuaDetailActivity.class);
+                            intent.putExtra("key",Integer.valueOf(pagerData.get(position).getSubid()));
+                            mContext.startActivity(intent);
+                        }else if(pagerData.get(position).getLink().contains("special/specialid")){
+                            intent.setClass(mContext,WebActivity.class);
+                            intent.putExtra("key",Integer.valueOf(pagerData.get(position).getSubid()));
+                            mContext.startActivity(intent);
+                        }
+
+            }
+        });
+            container.addView(view);
+            return view;
     }
 
     @Override

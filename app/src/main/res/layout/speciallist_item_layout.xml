@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="190dp">
+    <ImageView
+        android:id="@+id/special_item_specialimage"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:orientation="vertical"
+            android:layout_height="60dp">
+            <TextView
+                android:id="@+id/special_item_specialname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:textColor="@color/grey"/>
+            <TextView
+                android:id="@+id/special_item_specialsmallname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/darkgrey"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/special_item_specialstnum"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:textColor="@color/darkgray"
+            android:background="@color/orange"
+            android:textSize="14sp"
+            android:layout_marginRight="8dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

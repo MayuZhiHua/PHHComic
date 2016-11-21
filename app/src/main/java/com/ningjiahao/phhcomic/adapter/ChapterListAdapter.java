@@ -1,6 +1,7 @@
 package com.ningjiahao.phhcomic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.activity.ReadManHuaActivity;
 import com.ningjiahao.phhcomic.bean.ManHuaChapterBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 import com.ningjiahao.phhcomic.helper.RecyclerViewAdapterHelper;
@@ -40,6 +42,7 @@ public class ChapterListAdapter extends RecyclerViewAdapterHelper<ManHuaChapterB
         if(holder instanceof MyViewHolder){
             Glide.with(mContext)
                     .load(URLConstants.IMAGE_BASE_URL+mList.get(position).getIcon())
+                    .placeholder(R.drawable.ticai_placeimage)
                     .into(((MyViewHolder) holder).chapterlist_image);
             ((MyViewHolder) holder).chapterlist_chapterName.setText(mList.get(position).getName());
             String time=formatData("yyyy-MM-dd",Long.valueOf(mList.get(position).getAndpubtime()));
@@ -70,7 +73,9 @@ public class ChapterListAdapter extends RecyclerViewAdapterHelper<ManHuaChapterB
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(mContext, ReadManHuaActivity.class);
+                    intent.putExtra("key",Integer.valueOf(mList.get(getPosition()).getId()));
+                    mContext.startActivity(intent);
                 }
             });
         }
