@@ -30,47 +30,47 @@
         <RadioButton
             android:id="@+id/mainactivity_xiaoxu"
             android:layout_width="30dp"
-            android:layout_height="10dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:button="@null"
-            android:background="@drawable/main_xiaowu"
+            android:drawableTop="@drawable/main_xiaowu"
             android:gravity="center" />
 
         <RadioButton
             android:id="@+id/mainactivity_faxian"
             android:layout_width="30dp"
-            android:layout_height="10dp"
+            android:layout_height="50dp"
             android:button="@null"
-            android:background="@drawable/main_faxian"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/main_faxian"
             android:gravity="center" />
 
 
         <RadioButton
             android:id="@+id/mainactivity_manhuaku"
             android:layout_width="30dp"
-            android:layout_height="10dp"
+            android:layout_height="50dp"
             android:button="@null"
-            android:background="@drawable/main_manhuaku"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/main_manhuaku"
             android:checked="true"
             android:gravity="center" />
-
-
 
         <RadioButton
             android:id="@+id/mainactivity_quanzi"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:button="@null"
-            android:background="@drawable/main_quanzi"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/main_quanzi"
             android:gravity="center" />
-
-
         <RadioButton
             android:id="@+id/mainactivity_geren"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:button="@null"
-            android:background="@drawable/main_geren"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/main_geren"
             android:gravity="center" />
 
 

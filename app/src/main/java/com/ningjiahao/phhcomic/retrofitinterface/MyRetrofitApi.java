@@ -13,10 +13,6 @@ import com.ningjiahao.phhcomic.bean.RedNewBean;
 import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
 import com.ningjiahao.phhcomic.bean.SearchResultBean;
 import com.ningjiahao.phhcomic.bean.SpecialListBean;
-import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
-import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
-import com.ningjiahao.phhcomic.bean.SearchDefaultBean;
-import com.ningjiahao.phhcomic.bean.SearchResultBean;
 import com.ningjiahao.phhcomic.bean.ThemeBean;
 import com.ningjiahao.phhcomic.bean.TuiJianBean;
 import com.ningjiahao.phhcomic.bean.UpdateBean;
@@ -26,15 +22,42 @@ import com.ningjiahao.phhcomic.bean.ZanNumBean;
 import java.util.Map;
 
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import rx.Observable;
+import rx.Observer;
 
 /**
  * Created by 甯宁寧 on 2016-11-14.
  */
 
 public interface MyRetrofitApi {
-
+    @POST
+    Observable<ManHuaKuBean> getManHuaKuBean(@Url String url);
+    @GET
+    Observable<ManHuaDetailBean> getManHuaDetailBean(@Url String url, @Query("comicid") int id, @Query("from") int from);
+    @POST
+    Observable<ZanNumBean> getZanNumBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<ManHuaChapterBean> getManHuaChapterBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<ManHuaDiscussBean> getManHuaDiscussBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<ManHuaBean> getManHuaBean(@Url String url, @QueryMap Map<String,Object> map);
+    @GET
+    Observable<UpdateBean> getUpdateBean(@Url String url);
+    @GET
+    Observable<RedNewBean> getRedNewBean(@Url String url);
+    @GET
+    Observable<HotRankBean> getHotRankBean(@Url String url);
+    @GET
+    Observable<OverRankBean> getOverRankBean(@Url String url);
+    @GET
+    Observable<SpecialListBean> getSpecialListBean(@Url String url);
+    @GET
+    Observable<WebBean> getWebBean(@Url String url);
     @GET
     Observable<ThemeBean>getThemeData(@Url String url);
 
@@ -50,4 +73,9 @@ public interface MyRetrofitApi {
 
     @GET
     Observable<SearchDefaultBean>getSearchDefaultData(@Url String url);
+
+    //获得TuiJianBean对象
+    @GET
+    Observable<TuiJianBean> getTuiJianBean(@Url String url, @QueryMap() Map<String,String> map);
+
 }
