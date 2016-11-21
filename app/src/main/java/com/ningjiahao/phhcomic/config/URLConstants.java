@@ -44,4 +44,13 @@ public class URLConstants {
     public static final String FANS_URL = "http://common.moyougames.com/Follow/hisfans";
     public static final String FOLLOW_URL = "http://common.moyougames.com/Follow/hisfollowlist";
     public static final String USER_URL = "http://common.moyougames.com/User/hisinfo";
+
+
+    public static final String FIND_THEME_URL="http://api.lookmanhua.com/lists/topic?page=1&size=100&from=4";
+
+    public static final String BASE_IMAGE_URL="http://static.moyougames.com/";
+
+
+
+
 }
