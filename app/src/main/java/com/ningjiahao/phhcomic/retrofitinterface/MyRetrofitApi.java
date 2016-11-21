@@ -1,5 +1,6 @@
 package com.ningjiahao.phhcomic.retrofitinterface;
 
+import com.ningjiahao.phhcomic.bean.FansBean;
 import com.ningjiahao.phhcomic.bean.FindContentTitleBean;
 import com.ningjiahao.phhcomic.bean.FindSearchTitleBean;
 import com.ningjiahao.phhcomic.bean.HotRankBean;
@@ -29,21 +30,13 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import rx.Observable;
-import rx.Observer;
-=======
-import com.ningjiahao.phhcomic.bean.ThemeBean;
-
-import retrofit2.http.GET;
-import retrofit2.http.Url;
-import rx.Observable;
->>>>>>> Stashed changes
 
 /**
  * Created by 甯宁寧 on 2016-11-14.
  */
 
 public interface MyRetrofitApi {
-<<<<<<< Updated upstream
+
     @POST
     Observable<ManHuaKuBean> getManHuaKuBean(@Url String url);
     @GET
@@ -95,14 +88,11 @@ public interface MyRetrofitApi {
 
     //获得FansBean对象
     @GET
-    Observable<FansBean> getFansBean(@Url String url,@QueryMap() Map<String,String> map);
+    Observable<FansBean> getFansBean(@Url String url, @QueryMap() Map<String,String> map);
 
     //获得UserBan对象
     @GET
     Observable<UserBean> getUserBean(@Url String url,@QueryMap() Map<String,String> map);
-=======
 
-    @GET
-    Observable<ThemeBean>getThemeData(@Url String url);
->>>>>>> Stashed changes
+
 }

@@ -27,21 +27,13 @@
         <activity android:name=".activity.TieZiActivity" />
         <activity android:name=".activity.ManHuaDetailActivity" />
         <activity android:name=".activity.PhotoViewActivity" />
-        <activity android:name=".activity.YzhTestActivity"/>
-        <activity android:name=".activity.TestActivity">
-
-
-
-
-
-
+        <activity android:name=".activity.YzhTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-
-
+        </activity>
+        <activity android:name=".activity.TestActivity">
 
         </activity>
         <activity
@@ -52,9 +44,7 @@
         <activity android:name=".activity.ManHuaRankActivity" />
         <activity android:name=".activity.SpcialListActivity" />
         <activity android:name=".activity.WebActivity"></activity>
-        <activity android:name=".activity.SearchActivity">
-
-        </activity>
+        <activity android:name=".activity.SearchActivity"></activity>
         <activity android:name=".base.BaseActivity"></activity>
         <activity android:name=".activity.UserActivity" />
         <activity android:name=".activity.LoginActivity" />
