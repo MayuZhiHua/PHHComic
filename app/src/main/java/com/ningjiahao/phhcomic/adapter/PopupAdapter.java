@@ -64,10 +64,10 @@ public class PopupAdapter extends RecyclerView.Adapter{
         Glide.with(mContext).load(URLConstants.BASE_IMAGE_URL+mList.get(position).getIconr())
                 .into(((MyViewHolder)holder).imageView);
         }
-
     }
 
     @Override
+
     public int getItemCount() {
         return mList.size();
     }
