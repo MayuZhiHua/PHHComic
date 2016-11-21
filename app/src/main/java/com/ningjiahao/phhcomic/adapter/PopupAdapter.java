@@ -61,7 +61,9 @@ public class PopupAdapter extends RecyclerView.Adapter{
         if (holder instanceof MyViewHolder){
         ((MyViewHolder)holder).textView_name.setText(mList.get(position).getName());
         ((MyViewHolder)holder).textView_partname.setText(mList.get(position).getComicnum()+"部");
-        Glide.with(mContext).load(URLConstants.BASE_IMAGE_URL+mList.get(position).getIconr())
+        Glide.with(mContext)
+                .load(URLConstants.BASE_IMAGE_URL+mList.get(position).getIconr())
+                .placeholder(R.drawable.ticai_placeimage)
                 .into(((MyViewHolder)holder).imageView);
         }
     }

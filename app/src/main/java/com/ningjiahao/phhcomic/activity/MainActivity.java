@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ManHuaKuFragment manHuaKuFragment;
     private QuanZiFragment quanZiFragment;
     private XiaoWoFragment xiaoWoFragment;
-    private RadioButton mainactivity_xiaoxu,mainactivity_faxian,mainactivity_manhuaku,mainactivity_quanzi,mainactivity_geren;
+    private FindFragment findFragment;
+    private RadioButton mainactivity_xiaoxu,mainactivity_faxian,mainactivity_manhuaku,mainactivity_quanzi;
     private FragmentManager fragmentManager;
 
     @Override
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         manHuaKuFragment=new ManHuaKuFragment();
         quanZiFragment=new QuanZiFragment();
         xiaoWoFragment=new XiaoWoFragment();
+        findFragment=new FindFragment();
         FragmentTransaction fragmentTransation=fragmentManager.beginTransaction();
         fragmentTransation.add(R.id.Framelayout_manhuaku,manHuaKuFragment,"manHuaKuFragment");
         fragmentTransation.show(manHuaKuFragment);
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransation.hide(quanZiFragment);
         fragmentTransation.add(R.id.Framelayout_manhuaku,xiaoWoFragment,"xiaoWoFragment");
         fragmentTransation.hide(xiaoWoFragment);
+        fragmentTransation.add(R.id.Framelayout_manhuaku,findFragment,"findFragment");
+        fragmentTransation.hide(findFragment);
         fragmentTransation.commit();
     }
 
@@ -51,10 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainactivity_manhuaku.setOnClickListener(this);
         mainactivity_quanzi= (RadioButton) findViewById(R.id.mainactivity_quanzi);
         mainactivity_quanzi.setOnClickListener(this);
-        mainactivity_geren= (RadioButton) findViewById(R.id.mainactivity_geren);
-        mainactivity_geren.setOnClickListener(this);
         fragmentManager=getSupportFragmentManager();
-
 
     }
 
@@ -66,20 +67,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentTransation.hide(manHuaKuFragment);
                 fragmentTransation.hide(quanZiFragment);
                 fragmentTransation.show(xiaoWoFragment);
+                fragmentTransation.hide(findFragment);
                 break;
             case R.id.mainactivity_faxian:
+                fragmentTransation.hide(xiaoWoFragment);
+                fragmentTransation.hide(manHuaKuFragment);
+                fragmentTransation.show(findFragment);
+                fragmentTransation.hide(quanZiFragment);
                 break;
             case R.id.mainactivity_manhuaku:
                 fragmentTransation.hide(xiaoWoFragment);
                 fragmentTransation.hide(quanZiFragment);
                 fragmentTransation.show(manHuaKuFragment);
+                fragmentTransation.hide(findFragment);
                 break;
             case R.id.mainactivity_quanzi:
                 fragmentTransation.hide(xiaoWoFragment);
                 fragmentTransation.hide(manHuaKuFragment);
                 fragmentTransation.show(quanZiFragment);
-                break;
-            case R.id.mainactivity_geren:
+                fragmentTransation.hide(findFragment);
                 break;
         }
         fragmentTransation.commit();

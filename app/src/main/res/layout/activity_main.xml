@@ -63,14 +63,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/main_quanzi"
             android:gravity="center" />
-        <RadioButton
-            android:id="@+id/mainactivity_geren"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:button="@null"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/main_geren"
-            android:gravity="center" />
+
 
 
     </RadioGroup>
