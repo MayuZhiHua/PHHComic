@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <fragment
+        <FrameLayout
             android:id="@+id/Framelayout_manhuaku"
-            android:name="com.ningjiahao.phhcomic.fragment.ManHuaKuFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

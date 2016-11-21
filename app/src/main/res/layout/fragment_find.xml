@@ -17,7 +17,7 @@
         android:background="@drawable/search_field"
         android:layout_margin="10dp"
         android:textSize="15sp"
-        android:textColorHint="@color/gray"
+        android:textColorHint="@color/grey"
         android:cursorVisible="false"
         />
     <ImageView
@@ -44,7 +44,7 @@
 
         android:layout_margin="10dp"
         android:textSize="15sp"
-        android:textColorHint="@color/gray"
+        android:textColorHint="@color/grey"
         android:cursorVisible="false"
         />
     <ImageView

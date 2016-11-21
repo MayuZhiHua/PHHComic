@@ -8,22 +8,27 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ningjiahao.phhcomic.R;
+import com.ningjiahao.phhcomic.adapter.ChapterListAdapter;
 import com.ningjiahao.phhcomic.adapter.ManHuaDetailAdapter;
 import com.ningjiahao.phhcomic.base.BaseActivity;
+import com.ningjiahao.phhcomic.bean.ManHuaChapterBean;
 import com.ningjiahao.phhcomic.bean.ManHuaDetailBean;
 import com.ningjiahao.phhcomic.bean.ManHuaKuBean;
 import com.ningjiahao.phhcomic.bean.ZanNumBean;
 import com.ningjiahao.phhcomic.config.URLConstants;
 import com.ningjiahao.phhcomic.fragment.ChapterListFragment;
 import com.ningjiahao.phhcomic.fragment.DetailDiscussFragment;
+import com.ningjiahao.phhcomic.interfaces.GetPartId;
 import com.ningjiahao.phhcomic.retrofitinterface.MyRetrofitApi;
 
 import java.text.ParseException;
@@ -40,7 +45,7 @@ import rx.schedulers.Schedulers;
 
 import static com.ningjiahao.phhcomic.config.URLConstants.URL_ZANNUM;
 
-public class ManHuaDetailActivity extends BaseActivity {
+public class ManHuaDetailActivity extends BaseActivity{
     private ImageView manhuadetail_image, manhuadetail_state,imageview_line_rad_detail,imageview_line_red_discussdetail;
     private Button manhuadetail_back, manhuadetail_share, manhuadetail_startread, manhuadetail_download, manhuadetail_collection;
     private TextView manhuadetail_name, manhuadetail_type,manhuadetail_chapter, manhuadetail_author, manhuadetail_discuss,manhuadetail_jianjie, manhuadetail_score, manhuadetail_zanNum;
@@ -50,6 +55,7 @@ public class ManHuaDetailActivity extends BaseActivity {
     private DetailDiscussFragment detailDiscussFragment;
     private List<Fragment> fragmentList=new ArrayList<>();
     private ManHuaDetailAdapter manHuaDetailAdapter;
+    private int PartId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,7 +160,6 @@ public class ManHuaDetailActivity extends BaseActivity {
 
 
     public void getData() {
-
         myRetrofitApi.getManHuaDetailBean(URLConstants.URL_DETAIL_MANHUA, id, 4)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -185,6 +190,7 @@ public class ManHuaDetailActivity extends BaseActivity {
                         manhuadetail_zanNum.setText(manHuaDetailBean.getC().getId());
                     }
                 });
+
         Map<String, Object> map = new HashMap<>();
         map.put("proid", 1);
         map.put("usert", "5c294581a1cf38da887cd5404c997092");
@@ -208,6 +214,7 @@ public class ManHuaDetailActivity extends BaseActivity {
 
                     }
                 });
+
 
     }
     private void title2() {
