@@ -5,11 +5,11 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.ningjiahao.phhcomic"
-<<<<<<< Updated upstream
+
         minSdkVersion 17
-=======
+
         minSdkVersion 16
->>>>>>> Stashed changes
+
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -40,6 +40,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:gridlayout-v7:25.0.0'
+
     testCompile 'junit:junit:4.12'
 }
